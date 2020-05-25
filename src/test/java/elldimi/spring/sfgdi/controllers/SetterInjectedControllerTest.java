@@ -1,10 +1,8 @@
 package elldimi.spring.sfgdi.controllers;
 
-import elldimi.spring.sfgdi.services.GreetingServiceImpl;
+import elldimi.spring.sfgdi.services.ConstructorGreetingService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class SetterInjectedControllerTest {
 
@@ -13,7 +11,7 @@ class SetterInjectedControllerTest {
     @BeforeEach
     void setUp() {
         this.controller = new SetterInjectedController();
-        this.controller.setService(new GreetingServiceImpl());
+        this.controller.setService(new ConstructorGreetingService());
     }
 
     @Test

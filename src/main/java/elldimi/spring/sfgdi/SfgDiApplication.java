@@ -1,9 +1,6 @@
 package elldimi.spring.sfgdi;
 
-import elldimi.spring.sfgdi.controllers.ConstructorInjectedController;
-import elldimi.spring.sfgdi.controllers.MyController;
-import elldimi.spring.sfgdi.controllers.PropertyInjectedController;
-import elldimi.spring.sfgdi.controllers.SetterInjectedController;
+import elldimi.spring.sfgdi.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -14,12 +11,16 @@ public class SfgDiApplication {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(SfgDiApplication.class, args);
         //run() -> This method returns an application context.
+
+        I18nController i18nController = (I18nController) context.getBean("i18nController");
+        System.out.println(i18nController.congrats());
+
         MyController myController = (MyController) context.getBean("myController");
         //beans are always written with a small first letter.
 
-        String hello = myController.sayHello();
 
-        System.out.println(hello);
+        System.out.println("------------------------------------------------------------Primary Bean");
+        System.out.println(myController.sayHello());
 
         System.out.println("------------------------------------------------------------Property");
         PropertyInjectedController propertyInjectedController =
